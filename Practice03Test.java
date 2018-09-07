@@ -54,11 +54,29 @@ public class Practice03Test {
 
 	public int find_min_iterative () {
 		// TODO: Fill in this iterative function.
+		int tinyIndex = 0;
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] < arr[tinyIndex]) {
+				tinyIndex = i;
+			}
+		}
+		return tinyIndex;
 	}
 
 
 	public int find_min_recursive () {
 		// TODO: Fill in this recursive function.
+		return find_min_recursive(0, 1);
+	}
+
+	public int find_min_recursive (int tinyIndex, int nextIndex) {
+		if (nextIndex == arr.length) {
+			return tinyIndex;
+		}
+		if (arr[nextIndex] < arr[tinyIndex]) {
+			return find_min_recursive(nextIndex, nextIndex + 1);
+		}
+		return find_min_recursive(tinyIndex, nextIndex + 1);
 	}
 
 
